@@ -1,0 +1,97 @@
+1- dualingo
+2- memrise
+3- machine learning algorithm
+4- bir data uzerine calis
+
+https://www.veribilimiokulu.com/associationrulesanalysis/
+https://www.veribilimiokulu.com/python-ile-birliktelik-kurallari-analizi-association-rules-analysis-with-python/
+
+
+* RFM
+Müşterileri segmentlemek, mevcut müşteri durumunu gözlemlemek amacıyla uygulanan bir metottur.
+-Kampanya kararlarında
+-Sadakat program çalışmalarında
+-Terk eden müşterilerin daha kolay tespit edilmesinde
+-Çeşitli müşteri analizlerinde kullanılır.
+
+* Recency
+Genel anlamda müşterinin son alışverişinden bugüne kadar geçen zaman olarak tanımlanır.
+Sadece alışveriş oalrak değil, müşterinin websitemizi en son ne zaman ziyaret ettiği, en son call center arama tarihinden bugüne kadar geçen zaman olarak da bilinir.
+Müşteri bazında (Bugünün tarihi-Son ziyaret tarihi) olarak hesaplanır.
+
+*Frequency
+Müşterinin ne sıklıkla alışveriş yaptığını, ne sıklıkla siteye giriş yaptığını gösteren metriktir. Genellikle sipariş numarası/sipariş kodunun saydırılmasıyla sonuç verir.
+
+* Monetary 
+Müşterinin ne kadar harcama yaptığıdır.
+Müşteri bazında gelen ciro/harcama tutarı toplanır.
+
+Müşteri datası bu 3 metriğe göre 5 eşit parçaya bölünür.
+Sonrasında bu 3 metriğin bir araya geldiği RFM skoru atanır.(135-111-555 vs.gibi)
+Python, R, SPSS vs. kullanılarak uygulanabilir. 
+
+KMeans Nerelerde Kullanılır?
+- Ürünlerin, onları satın alan müşteri gruplarına göre kümelenmesi
+- Belgelerin, web aramalarının, kullanılan benzer kelimelere göre kümelenmesi
+- Müşteri Segmentasyonu
+- BiyoInformatik alanında benzer genlerin gruplanması
+
+K-Means Kümeleme Algoritması Nedir?
+- Gözetimsiz öğrenme algoritmalarından biridir.
+- Amaç: Datayı belirli özelliklere göre ayırıp karakteritik özelliklerini çıkartmak.
+- Noktalar arası uzaklık toplamını minimize etmek
+
+K-Means'de Süreç Nasıl İşler?
+- K merkezlerin random seçilmesiyle başlar.
+- Küme içindeki tüm noktaların merkeze uzaklık ortalaması daha sonra centroidlerin(merkezlerin) konumunu güncellemek için kullanılır.
+- Yukarıdaki adımlar centroidlerin(merkezlerin) degerleri sabitlenene kadar devam eder.
+
+Inertia
+- Bir küme içindeki noktaların ne kadar uzakta oldugunu söyler. Bu nedenle küçük bir inertia hedeflenir.
+- Inertia degeri sıfırdan başlar ve artar.(min SSE)
+
+Silhouette Score
+- Bir kümedeki veri noktalarının, başka bir kümedeki veri noktalarından ne kadar uzakta olduğunu gösterir. 
+- Puan aralığı -1 ile 1 arasında olup, 1'e yaklaşması beklenir.
+
+Veri Hazırlama(PreProcessing)
+- Süreci hızlandırmak
+- Modelin çalışma prensiplerine uydurmak amacıyla yapılabilecekler:
+	PCA (Principal Component Analysis)
+	Scaling / Standardization
+
+
+Birliktelik Analizi(Association Rules)
+- Sepet içerisinde birlikte alınan ürünlerin tespiti yapılır.
+- Bu ürünler raflarda birlikte yer alabilir, kampanya kurgularında beraber kampanyaya dahil edilebilir.
+- Apriori & FP Growth algoritmaları kullanılabilir.
+- Support, Confidence, Lift metrikleri ile yorumlanır.
+
+Support Range 
+- Destek Aralığı, x ve y ürününü satın alan müşterilerin toplam müşteriye oranını gösterir.
+- Support = Freq(A,B)/N
+
+Confidence Range
+- Güven Aralığı, x ve y ürünlerini satın almış müşteri sayısının y ürününü satın almış müşteri sayısına oranıdır.
+- Confidence = Freq(A,B)/Freq(A)
+
+
+
+
+Değişkenlerimiz
+
+InvoiceNo: Fatura numarası. Her işleme yani faturaya ait eşsiz numara. Eğer bu kod C ile başlıyorsa işlemin iptal edildiğini ifade eder.
+
+StockCode: Ürün kodu. Her bir ürün için eşsiz numara.
+
+Description: Ürün ismi
+
+Quantity: Ürün adedi. Faturalardaki ürünlerden kaçar tane satıldığını ifade etmektedir.
+
+InvoiceDate: Fatura tarihi ve zamanı.
+
+UnitPrice: Ürün fiyatı (Sterlin cinsinden)
+
+CustomerID: Eşsiz müşteri numarası
+
+Country: Müşterinin yaşadığı ülke.

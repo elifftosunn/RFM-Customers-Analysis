@@ -12,7 +12,7 @@ from mlxtend.frequent_patterns import fpgrowth
 
 
 df = pd.read_csv("OnlineRetail.csv",encoding= 'unicode_escape')
-# to convert InvoiceDate from string to datetime
+# to convert InvoiceDate from string to datetime    
 df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
 # adding to a TotalPrice column
 df["TotalPrice"] = df.Quantity * df.UnitPrice
@@ -155,7 +155,7 @@ print(rule.sort_values("confidence",ascending=False))
 antecedents	                                                                consequents
 frozenset({'REGENCY CAKESTAND 3 TIER', 'GREEN REGENCY TEACUP AND SAUCER'})	frozenset({'ROSES REGENCY TEACUP AND SAUCER '})
 
-antecedent support	     consequent support	         support           	      confidence	      lift	             leverage	             conviction
+antecedent support	     consequent support	         support           	      confidence	     lift	              leverage	              conviction
 0.03832665330661322    	0.05075150300601202	         0.031663326653306616	0.8261437908496734	16.278213292556252	0.029718191392805654	5.459963159401515
 
 - antecedents tüm ürünlerde bulunma yüzdesi 0.03832665330661322

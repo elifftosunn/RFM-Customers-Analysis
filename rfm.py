@@ -9,7 +9,7 @@ from sklearn.metrics import silhouette_score
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 from mlxtend.frequent_patterns import fpgrowth 
-
+       
  
 df = pd.read_csv("OnlineRetail.csv",encoding= 'unicode_escape')
 # to convert InvoiceDate from string to datetime    
@@ -37,7 +37,7 @@ rfm_table = rfm_table.rename(columns = {"TotalPrice_x":"Monetary",
 rfm_table = rfm_table.sort_values("Recency",ascending=True)
 rfm_table["Rec_Tile"] = pd.qcut(rfm_table.Recency, 5 , labels = [1,2,3,4,5])
 rfm_table["Mone_Tile"] = pd.qcut(rfm_table.Monetary, 5, labels = [1,2,3,4,5])
- 
+         
 def FScore(x,p,d):
     if x <= d[p][0.2]:
         return 1
@@ -67,7 +67,7 @@ for col in rfm_table.iloc[:,3:6]:
 RFM_Score_Group = rfm_table.groupby("RFM_Score").agg({"Recency":["mean","min","max","count"],
                                     "Monetary": ["mean","min","max","count"],
                                     "Frequency":["mean","min","max","count"]}).round(1)
- 
+            
 #print(RFM_Score_Group)
 
 # Recency, Monetary, Frequency of their density visualization
@@ -99,7 +99,7 @@ plt.xlabel("N-Clusters")
 plt.title("Number of Clusters")
 plt.show()
 
-    
+              
 # silhouette_score => Bir kümedeki veri noktalarının, başka bir kümedeki veri noktalarından ne kadar uzakta olduğunu gösterir. 1' yakın olması iyi
 silhouette_score_list = []
 for i in range(2,10):
@@ -108,7 +108,7 @@ for i in range(2,10):
     pred = kmeans.predict(clusterData)
     silhouette_score_list.append(silhouette_score(clusterData,kmeans.labels_))
     print(silhouette_score_list)
-
+          
     
 clusDataFrame["cluster"] = pred
 plt.figure(figsize=(10,5))
